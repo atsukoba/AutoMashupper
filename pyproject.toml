@@ -1,0 +1,98 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "automashupper"
+version = "0.1.0"
+description = "Automatic mashup generator using audio analysis and beat matching"
+readme = "README.md"
+requires-python = ">=3.9,<3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Miguel Pérez", email = "miguel_on_94@hotmail.com"},
+    {name = "Atsuya Kobayashi", email = "atsuya.kobayashi@outlook.jp"}
+]
+keywords = ["audio", "mashup", "music", "beat-matching", "audio-analysis"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+]
+dependencies = [
+    "cython>=3.1.2",
+    "essentia>=2.1b6.dev1389",
+    "librosa>=0.11.0",
+    "madmom>=0.16.1",
+    "matplotlib>=3.9.4",
+    "numpy>=1.20.0,<2.0.0",  # Restrict numpy version for madmom compatibility
+    "pydub>=0.25.1",
+    "pyrubberband>=0.4.0",
+    "scipy>=1.13.1",
+    "setuptools>=80.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "isort>=5.0",
+    "flake8>=6.0",
+]
+
+[project.scripts]
+automashupper = "auto_mashupper.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/atsukoba/AutoMashupper"
+Repository = "https://github.com/atsukoba/AutoMashupper"
+Issues = "https://github.com/atsukoba/AutoMashupper/issues"
+
+[tool.uv]
+no-build-isolation-package = ["madmom"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["auto_mashupper*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "dependency: marks tests that require all dependencies to be installed",
+    "unit: marks tests as unit tests",
+]
+filterwarnings = [
+    "ignore::UserWarning",
+    "ignore::DeprecationWarning", 
+    "ignore::PendingDeprecationWarning",
+]
+
+[dependency-groups]
+dev = [
+    "build>=1.2.2.post1",
+    "pytest>=8.4.1",
+    "twine>=6.1.0",
+]
