@@ -24,15 +24,12 @@ classifiers = [
 ]
 dependencies = [
     "cython>=3.1.2",
-    "essentia>=2.1b6.dev1389",
-    "librosa>=0.11.0",
     "madmom>=0.16.1",
-    "matplotlib>=3.9.4",
-    "numpy>=1.20.0,<2.0.0",  # Restrict numpy version for madmom compatibility
+    "numpy>=1.19.0,<1.20.0", # Restrict numpy version for madmom compatibility (AttributeError: module 'numpy' has no attribute 'float')
     "pydub>=0.25.1",
     "pyrubberband>=0.4.0",
-    "scipy>=1.13.1",
     "setuptools>=80.9.0",
+    "soundfile>=0.13.1",
 ]
 
 [project.optional-dependencies]
@@ -94,5 +91,6 @@ filterwarnings = [
 dev = [
     "build>=1.2.2.post1",
     "pytest>=8.4.1",
+    "pytest-cov>=6.2.1",
     "twine>=6.1.0",
 ]
