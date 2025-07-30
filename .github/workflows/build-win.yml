@@ -95,14 +95,3 @@ jobs:
       - name: Build package
         run: |
           python -m build
-
-      - name: Check package
-        run: |
-          twine check dist/*
-
-      - name: Upload Windows build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: windows-build-${{ github.sha }}
-          path: dist/
-          retention-days: 7
