@@ -48,7 +48,7 @@ automashupper = "auto_mashupper.cli:main"
 no-build-isolation-package = ["madmom"]
 
 [tool.uv.sources]
-madmom = { url = "git+https://github.com/CPJKU/madmom" }
+madmom = { git = "git+https://github.com/CPJKU/madmom" }
 
 [tool.setuptools.packages.find]
 where = ["."]
