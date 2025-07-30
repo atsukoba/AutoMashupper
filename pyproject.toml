@@ -44,13 +44,11 @@ dev = [
 [project.scripts]
 automashupper = "auto_mashupper.cli:main"
 
-[project.urls]
-Homepage = "https://github.com/atsukoba/AutoMashupper"
-Repository = "https://github.com/atsukoba/AutoMashupper"
-Issues = "https://github.com/atsukoba/AutoMashupper/issues"
-
 [tool.uv]
 no-build-isolation-package = ["madmom"]
+
+[tool.uv.sources]
+madmom = "git+https://github.com/CPJKU/madmom"
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -64,23 +62,6 @@ target-version = ['py39']
 profile = "black"
 line_length = 88
 
-[tool.pytest.ini_options]
-minversion = "7.0"
-addopts = [
-    "-ra",
-    "--strict-markers",
-    "--strict-config",
-]
-testpaths = ["tests"]
-python_files = ["test_*.py", "*_test.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
-markers = [
-    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
-    "integration: marks tests as integration tests",
-    "dependency: marks tests that require all dependencies to be installed",
-    "unit: marks tests as unit tests",
-]
 filterwarnings = [
     "ignore::UserWarning",
     "ignore::DeprecationWarning", 
