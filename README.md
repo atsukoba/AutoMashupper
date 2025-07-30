@@ -4,6 +4,9 @@ Automatic mashup generator using audio analysis and beat matching.
 
 Based on [AutoMashUpper: Automatic Creation of Multi-Song Music Mashups](https://www.researchgate.net/publication/265130656_AutoMashUpper_Automatic_Creation_of_Multi-Song_Music_Mashups)
 
+> [!IMPORTANT]
+> The original implementation repository is <https://github.com/migperfer/AutoMashupper>.
+
 ## Features
 
 - Audio analysis and beat synchronization
@@ -23,27 +26,23 @@ cd AutoMashupper
 
 # Install in editable mode
 pip install -e .
+
+# or 
+uv sync
 ```
 
 ### System Dependencies
 
 This package requires several system-level audio libraries:
 
+> [!WARNING]
+> Mac Apple Silicon is not supported due to using `madmom` and `numpy<1.20`
+
 **Ubuntu/Debian:**
+
 ```bash
 sudo apt-get install ffmpeg libsndfile1 libfftw3-dev
-```
-
-**macOS:**
-```bash
-brew install ffmpeg fftw
-```
-
-**Windows:**
-```bash
-# Use conda for easier dependency management
-conda install -c conda-forge ffmpeg
-```
+``````
 
 ## Usage
 
