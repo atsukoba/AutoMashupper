@@ -7,29 +7,36 @@ Based on [AutoMashUpper: Automatic Creation of Multi-Song Music Mashups](https:/
 > [!IMPORTANT]
 > The original implementation repository is <https://github.com/migperfer/AutoMashupper>.
 
-## Features
-
-- Audio analysis and beat synchronization
-- Automatic mashability calculation between songs
-- Tempo adjustment and pitch shifting
-- Command-line interface for easy usage
-- Python API for integration with other projects
-
 ## Installation
 
-### From source (development)
+Clone the repository
 
 ```bash
-# Clone the repository
 git clone https://github.com/atsukoba/AutoMashupper.git --recursive
-cd AutoMashupper
+```
 
+and install deps
+
+```bash
 uv sync
+
+# need to install mandom from source using pip
 cd madmom
 uv pip install -e .
 ```
 
-### System Dependencies
+### Dependencies
+
+- Python 3.9
+- librosa - Audio analysis
+- numpy - Numerical computations
+- scipy - Scientific computing
+- essentia - Music analysis
+- madmom - Music signal processing
+- pyrubberband - Audio time-stretching and pitch-shifting
+- pydub - Audio file manipulation
+- matplotlib - Plotting
+
 
 This package requires several system-level audio libraries:
 
@@ -39,22 +46,7 @@ This package requires several system-level audio libraries:
 sudo apt-get install ffmpeg libsndfile1 libfftw3-dev libeigen3-dev pkg-config
 ```
 
-## Usage
-
-### Command Line Interface
-
-```bash
-# Calculate mashability between songs
-automashupper mashability base_song.mp3
-
-# Generate a mashup
-automashupper generate base_song.mp3
-
-# Show version
-automashupper --version
-```
-
-### Python API
+## Library
 
 ```python
 import auto_mashupper
@@ -106,26 +98,10 @@ python -m build
 python -m twine check dist/*
 ```
 
-## Dependencies
-
-- Python 3.9+
-- librosa - Audio analysis
-- numpy - Numerical computations
-- scipy - Scientific computing
-- essentia - Music analysis
-- madmom - Music signal processing
-- pyrubberband - Audio time-stretching and pitch-shifting
-- pydub - Audio file manipulation
-- matplotlib - Plotting
-
 ## License
 
 MIT License
 
 ## Citation
 
-If you use this code in your research, please cite:
-
-```
-AutoMashUpper: Automatic Creation of Multi-Song Music Mashups
-```
+Cite the originall paper and impelmentation.
