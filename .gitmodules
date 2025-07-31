@@ -1,0 +1,3 @@
+[submodule "madmom"]
+	path = madmom
+	url = https://github.com/Voicify-AI-Team/madmom

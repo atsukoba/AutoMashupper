@@ -25,11 +25,14 @@ classifiers = [
 dependencies = [
     "setuptools>=80.9.0",
     "cython>=3.1.2",
-    "numpy>=1.19.0,<1.20.0", # Restrict numpy version for madmom compatibility (`AttributeError: module 'numpy' has no attribute 'float'`)
-    "madmom>=0.16.1",
     "pydub>=0.25.1",
     "pyrubberband>=0.4.0",
     "soundfile>=0.13.1",
+    "numpy==2.0.2",
+    "essentia==2.1b6.dev1389",
+    "librosa>=0.11.0",
+    "madmom",
+    "matplotlib>=3.9.4",
 ]
 
 [project.optional-dependencies]
@@ -48,7 +51,7 @@ automashupper = "auto_mashupper.cli:main"
 no-build-isolation = true
 
 [tool.uv.sources]
-madmom = { git = "git+https://github.com/CPJKU/madmom" }
+madmom = { path = "madmom" }
 
 [tool.setuptools.packages.find]
 where = ["."]

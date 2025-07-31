@@ -13,10 +13,10 @@ class TestCLICommands:
     def test_version_command(self, capsys):
         """Test --version command"""
         from auto_mashupper.cli import main
-        
+
         with pytest.raises(SystemExit) as excinfo:
             main()
-        
+
         # Should exit with code 0 for version
         assert excinfo.value.code == 0
 
@@ -24,10 +24,10 @@ class TestCLICommands:
     def test_help_command(self, capsys):
         """Test --help command"""
         from auto_mashupper.cli import main
-        
+
         with pytest.raises(SystemExit) as excinfo:
             main()
-        
+
         # Should exit with code 0 for help
         assert excinfo.value.code == 0
 
@@ -35,10 +35,10 @@ class TestCLICommands:
     def test_no_arguments(self, capsys):
         """Test CLI with no arguments"""
         from auto_mashupper.cli import main
-        
+
         with pytest.raises(SystemExit) as excinfo:
             main()
-        
+
         # Should exit with code 1 for missing arguments
         assert excinfo.value.code == 1
 
@@ -51,7 +51,7 @@ class TestCLIMashabilityCommand:
     def test_mashability_command_no_args(self, capsys):
         """Test mashability command without arguments"""
         from auto_mashupper.cli import main
-        
+
         with pytest.raises(SystemExit):
             main()
 
@@ -59,7 +59,7 @@ class TestCLIMashabilityCommand:
     def test_mashability_command_with_file(self, capsys):
         """Test mashability command with file argument"""
         from auto_mashupper.cli import main
-        
+
         with pytest.raises(SystemExit):
             main()
 
@@ -69,10 +69,10 @@ class TestCLIMashabilityCommand:
         # Mock the import to fail
         with patch.dict("sys.modules", {"auto_mashupper.mashability": None}):
             from auto_mashupper.cli import main
-            
+
             with pytest.raises(SystemExit) as excinfo:
                 main()
-            
+
             assert excinfo.value.code == 1
             captured = capsys.readouterr()
             assert "dependencies not available" in captured.err.lower()
@@ -86,7 +86,7 @@ class TestCLIGenerateCommand:
     def test_generate_command_valid_file(self, mock_exists, capsys):
         """Test generate command with valid file"""
         from auto_mashupper.cli import main
-        
+
         with pytest.raises(SystemExit):
             main()
 
@@ -95,10 +95,10 @@ class TestCLIGenerateCommand:
     def test_generate_command_missing_file(self, mock_exists, capsys):
         """Test generate command with missing file"""
         from auto_mashupper.cli import main
-        
+
         with pytest.raises(SystemExit) as excinfo:
             main()
-        
+
         assert excinfo.value.code == 1
         # Either file not found or dependency error is expected
         captured = capsys.readouterr()
@@ -111,10 +111,10 @@ class TestCLIGenerateCommand:
         # Mock the import to fail
         with patch.dict("sys.modules", {"auto_mashupper.mashability": None}):
             from auto_mashupper.cli import main
-            
+
             with pytest.raises(SystemExit) as excinfo:
                 main()
-            
+
             assert excinfo.value.code == 1
             captured = capsys.readouterr()
             assert "dependencies not available" in captured.err.lower()
@@ -127,17 +127,17 @@ class TestCLIErrorHandling:
     def test_invalid_command(self):
         """Test CLI with invalid command"""
         from auto_mashupper.cli import main
-        
+
         with pytest.raises(SystemExit) as excinfo:
             main()
-        
+
         assert excinfo.value.code == 2
 
     @patch("sys.argv", ["automashupper", "generate"])
     def test_generate_missing_argument(self):
         """Test generate command without required file argument"""
         from auto_mashupper.cli import main
-        
+
         with pytest.raises(SystemExit):
             main()
 
@@ -149,7 +149,7 @@ class TestCLIIntegration:
     def test_cli_module_structure(self):
         """Test that CLI module has expected structure"""
         from auto_mashupper import cli
-        
+
         assert hasattr(cli, "main")
         assert callable(cli.main)
 
@@ -158,6 +158,7 @@ class TestCLIIntegration:
         """Test that CLI can import its dependencies"""
         try:
             from auto_mashupper.cli import main
+
             # If this succeeds, basic imports work
             assert main is not None
         except ImportError as e:
@@ -166,7 +167,7 @@ class TestCLIIntegration:
     def test_cli_argument_parser_setup(self):
         """Test that argument parser is set up correctly"""
         from auto_mashupper.cli import main
-        
+
         # This tests that the argument parser doesn't crash on setup
         # We can't easily test the actual parser without mocking sys.argv
         # but we can ensure the function exists and is callable

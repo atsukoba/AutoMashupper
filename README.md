@@ -24,10 +24,7 @@ Based on [AutoMashUpper: Automatic Creation of Multi-Song Music Mashups](https:/
 git clone https://github.com/atsukoba/AutoMashupper.git
 cd AutoMashupper
 
-# Install in editable mode
-pip install -e .
-
-# or 
+uv sync --no-install-package madmom. # install madmom separately due to build issues related to setuptools dependency
 uv sync
 ```
 
@@ -41,8 +38,8 @@ This package requires several system-level audio libraries:
 **Ubuntu/Debian:**
 
 ```bash
-sudo apt-get install ffmpeg libsndfile1 libfftw3-dev
-``````
+sudo apt-get install ffmpeg libsndfile1 libfftw3-dev libeigen3-dev pkg-config
+```
 
 ## Usage
 

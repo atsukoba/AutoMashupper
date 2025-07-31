@@ -76,9 +76,7 @@ class TestMashabilityFunction:
                 bpm2=130,
             )
 
-    @pytest.mark.parametrize(
-        "bpm1,bpm2", [(60, 120), (120, 120), (90, 180), (140, 70)]
-    )
+    @pytest.mark.parametrize("bpm1,bpm2", [(60, 120), (120, 120), (90, 180), (140, 70)])
     def test_mashability_different_bpms(self, sample_audio_data, bpm1, bpm2):
         """Test mashability function with different BPM combinations"""
         from auto_mashupper import get_mashability
