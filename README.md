@@ -21,19 +21,17 @@ Based on [AutoMashUpper: Automatic Creation of Multi-Song Music Mashups](https:/
 
 ```bash
 # Clone the repository
-git clone https://github.com/atsukoba/AutoMashupper.git
+git clone https://github.com/atsukoba/AutoMashupper.git --recursive
 cd AutoMashupper
 
-uv sync --no-install-package madmom. # install madmom separately due to build issues related to setuptools dependency
 uv sync
+cd madmom
+uv pip install -e .
 ```
 
 ### System Dependencies
 
 This package requires several system-level audio libraries:
-
-> [!WARNING]
-> Mac Apple Silicon is not supported due to using `madmom` and `numpy<1.20`
 
 **Ubuntu/Debian:**
 

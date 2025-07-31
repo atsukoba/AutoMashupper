@@ -31,7 +31,6 @@ dependencies = [
     "numpy==2.0.2",
     "essentia==2.1b6.dev1389",
     "librosa>=0.11.0",
-    "madmom",
     "matplotlib>=3.9.4",
 ]
 
@@ -49,9 +48,6 @@ automashupper = "auto_mashupper.cli:main"
 
 [tool.uv]
 no-build-isolation = true
-
-[tool.uv.sources]
-madmom = { path = "madmom" }
 
 [tool.setuptools.packages.find]
 where = ["."]
