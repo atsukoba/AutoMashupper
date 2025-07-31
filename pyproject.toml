@@ -1,7 +1,3 @@
-[build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "automashupper"
 version = "0.1.0"
@@ -14,14 +10,6 @@ authors = [
     {name = "Atsuya Kobayashi", email = "atsuya.kobayashi@outlook.jp"}
 ]
 keywords = ["audio", "mashup", "music", "beat-matching", "audio-analysis"]
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
-    "Topic :: Multimedia :: Sound/Audio :: Analysis",
-]
 dependencies = [
     "setuptools>=80.9.0",
     "cython>=3.1.2",
@@ -49,10 +37,6 @@ automashupper = "auto_mashupper.cli:main"
 [tool.uv]
 no-build-isolation = true
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["auto_mashupper*"]
-
 [tool.black]
 line-length = 88
 target-version = ['py39']
@@ -72,5 +56,4 @@ dev = [
     "build>=1.2.2.post1",
     "pytest>=8.4.1",
     "pytest-cov>=6.2.1",
-    "twine>=6.1.0",
 ]
