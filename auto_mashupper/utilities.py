@@ -2,7 +2,7 @@ import essentia.standard as estd
 import numpy as np
 from librosa import core
 
-from auto_mashupper.utilities_pyrb import change_tempo, frequency_multiply
+from .utilities_pyrb import change_tempo, frequency_multiply
 
 
 def match_target_amplitude(sound, target_dBFS=0):
